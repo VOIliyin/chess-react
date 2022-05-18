@@ -10,6 +10,22 @@ import { King } from "./figure/King";
 export class Board {
     cells: Cell[][] = [];
 
+    public getCopy(): Board {
+        const board = new Board();
+        board.cells = this.cells;
+        return board;
+    }
+
+    public highlight(selectedCell: Cell | null) {
+        for(let i = 0; i < 8; i++) {
+            const row = this.cells[i] ;
+            for(let j = 0; j < 8; j++){
+                const targer = row[j];
+                targer.available = !!selectedCell?.figure?.canMove(targer);
+            }
+        }
+    }
+
     public initialCell() {
         for(let i = 0; i < 8; i++) {
             const row: Cell[] = [];
