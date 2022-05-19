@@ -6,13 +6,18 @@ import { Rook } from "./figure/Rook";
 import { Bishop } from "./figure/Bishop";
 import { Knight } from "./figure/Knight";
 import { King } from "./figure/King";
+import { Figure } from "./figure/Figure";
 
 export class Board {
     cells: Cell[][] = [];
+    lostBlackFigure: Figure[] = []
+    lostWhitekFigure: Figure[] = []
 
     public getCopy(): Board {
         const board = new Board();
         board.cells = this.cells;
+        board.lostBlackFigure = this.lostBlackFigure;
+        board.lostWhitekFigure = this.lostWhitekFigure;
         return board;
     }
 
