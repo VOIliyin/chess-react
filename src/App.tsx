@@ -5,6 +5,7 @@ import { Player } from './modules/Player';
 import { Colors } from './modules/Colors';
 import './styles/App.scss'
 import LostFigures from './components/LostFigures';
+import Timer from './components/Timer';
 
 function App() {
 	const [board, setBoard] = useState(new Board());
@@ -30,6 +31,7 @@ function App() {
 
 	return (
 		<div className="app">
+			<Timer currentPlayer={currentPlayer} restart={restart}/>
 			<LostFigures title='Черные фигуры' figures={board.lostBlackFigure}/>
 			<BoardComponent 
 				board={board} 
