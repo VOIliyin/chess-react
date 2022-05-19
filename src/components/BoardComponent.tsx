@@ -12,20 +12,18 @@ function BoardComponent({board, setBoard}: BoardProps) {
     const [selectedCell, setSelectedCell] = useState<Cell | null>(null);
 
     useEffect(() => {
-        if (selectedCell) {
+        if (board.cells.length !== 0) {
             highlightCell();
         }
     }
     ,[selectedCell])
 
     function click(cell: Cell) {
-        if (cell.figure) {
-            setSelectedCell(cell);
-        }
-
         if (selectedCell && selectedCell !== cell && selectedCell.figure?.canMove(cell)) {
             selectedCell.moveFigure(cell);
             setSelectedCell(null);
+        } else {
+            setSelectedCell(cell);
         }
     }
 

@@ -29,6 +29,14 @@ export class Figure {
     }
 
     canMove(target: Cell): boolean {
+        if (target?.figure?.color === this.color) {
+            return false;
+        }
+
+        if (target?.figure?.name === NameFigure.KING) {
+            return false;
+        }
+        
         return true;
     }
 
